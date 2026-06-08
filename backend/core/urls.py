@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import include, path
 
-from .views import health_check
+from .views import backend_home, health_check
 
 urlpatterns = [
+    path("", backend_home, name="backend-home"),
     path("admin/", admin.site.urls),
     path("api/health/", health_check, name="health-check"),
     path("api/auth/", include("users.urls")),

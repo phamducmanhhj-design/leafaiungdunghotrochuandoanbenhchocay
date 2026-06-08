@@ -2,6 +2,17 @@ from django.db import connection
 from django.http import JsonResponse
 
 
+def backend_home(request):
+    return JsonResponse(
+        {
+            "service": "LeafAI backend",
+            "status": "ok",
+            "health": "/api/health/",
+            "admin": "/admin/",
+        }
+    )
+
+
 def health_check(request):
     try:
         with connection.cursor() as cursor:
