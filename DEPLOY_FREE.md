@@ -53,7 +53,7 @@ ALLOWED_HOSTS=.onrender.com
 FRONTEND_ORIGIN=https://your-vercel-project.vercel.app
 CORS_ALLOWED_ORIGINS=https://your-vercel-project.vercel.app
 CORS_ALLOWED_ORIGIN_REGEXES=^https://.*\.vercel\.app$
-CSRF_TRUSTED_ORIGINS=https://leafaiungdunghotrochuandoanbenhchocay-backend.onrender.com,https://*.vercel.app
+CSRF_TRUSTED_ORIGINS=https://leafaiungdunghotrochuandoanbenhchocay.onrender.com,https://*.vercel.app
 SECRET_KEY=<generate a strong secret>
 SUPABASE_DB_URL=<your Supabase Postgres connection string>
 ```
@@ -61,7 +61,7 @@ SUPABASE_DB_URL=<your Supabase Postgres connection string>
 After the backend deploys, verify:
 
 ```text
-https://leafaiungdunghotrochuandoanbenhchocay-backend.onrender.com/admin/login/
+https://leafaiungdunghotrochuandoanbenhchocay.onrender.com/admin/login/
 ```
 
 ## 3. Deploy Next.js frontend on Vercel
@@ -82,8 +82,8 @@ Node.js Version: 20.x
 Set these frontend environment variables on Vercel:
 
 ```env
-DJANGO_BASE_URL=https://leafaiungdunghotrochuandoanbenhchocay-backend.onrender.com
-NEXT_PUBLIC_API_BASE_URL=https://leafaiungdunghotrochuandoanbenhchocay-backend.onrender.com
+DJANGO_BASE_URL=https://leafaiungdunghotrochuandoanbenhchocay.onrender.com
+NEXT_PUBLIC_API_BASE_URL=https://leafaiungdunghotrochuandoanbenhchocay.onrender.com
 ```
 
 The Next.js API route `/api/django/...` uses `DJANGO_BASE_URL` to proxy browser requests to Django.
@@ -96,7 +96,7 @@ After Vercel gives the real frontend URL, update these Render backend variables:
 FRONTEND_ORIGIN=https://your-real-project.vercel.app
 CORS_ALLOWED_ORIGINS=https://your-real-project.vercel.app
 CORS_ALLOWED_ORIGIN_REGEXES=^https://.*\.vercel\.app$
-CSRF_TRUSTED_ORIGINS=https://leafaiungdunghotrochuandoanbenhchocay-backend.onrender.com,https://*.vercel.app
+CSRF_TRUSTED_ORIGINS=https://leafaiungdunghotrochuandoanbenhchocay.onrender.com,https://*.vercel.app
 ```
 
 Redeploy or restart the Render backend.
