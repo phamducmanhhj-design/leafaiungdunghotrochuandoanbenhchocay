@@ -64,18 +64,19 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 ASGI_APPLICATION = "core.asgi.application"
 
-supabase_db_url = os.getenv("SUPABASE_DB_URL", "").strip()
-if supabase_db_url:
+database_url = os.getenv("DATABASE_URL", "").strip() or os.getenv("SUPABASE_DB_URL", "").strip()
+database_ssl_require = os.getenv("DATABASE_SSL_REQUIRE", "True").lower() == "true"
+if database_url:
     DATABASES = {
         "default": dj_database_url.parse(
-            supabase_db_url,
+            database_url,
             conn_max_age=600,
-            ssl_require=True,
+            ssl_require=database_ssl_require,
         )
     }
 else:
     if not DEBUG:
-        raise RuntimeError("SUPABASE_DB_URL is required when DEBUG=False. Refusing to use temporary SQLite in production.")
+        raise RuntimeError("DATABASE_URL is required when DEBUG=False. Refusing to use temporary SQLite in production.")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
